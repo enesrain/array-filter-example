@@ -10,13 +10,23 @@
         margin: 0px;
         padding: 0px;
       }
+      body{
+         background-color: #E5FDD1;
+      }
      header{
         height: 100px;
-        background-color: violet;
+        background-color: #B5F1CC;
         display: flex;
         justify-content: center;
         align-items: center;
      }
+     input{
+      text-align: center;
+      margin: 10px;
+      padding: 5px;
+      border-radius: 10px;
+     }
+
      main{
         height:80%;
         width:100%;
@@ -31,8 +41,13 @@
         align-items: center;
         width: 250px;
         height: 350px;
-        border: 2px solid violet;
+        border: 2px solid #FCC2FC;
+        border-radius: 10px;
+        background-color: white;
         margin: 10px;
+     }
+     main > div:hover{
+      box-shadow: 10px 10px 10px #FCC2FC;
      }
      img{
         background-size: cover;
@@ -45,7 +60,10 @@
 <body>
    
       <header>
-        <input type="text" class="input">
+        <input type="text" class="inputmax" placeholder="max fiyat">
+        <input type="text" class="inputmin" placeholder="min fiyat">
+       
+
       </header>
 
     <main>
@@ -55,3 +73,5 @@
     <script src="data.js"></script>
 </body>
 </html>
+
+

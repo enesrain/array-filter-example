@@ -1,21 +1,37 @@
 //elemanları çağırma
 let show = document.querySelector("main")
-let input = document.querySelector("input")
+
+//input
+let inputmax = document.querySelector(".inputmax")
+let inputmin = document.querySelector(".inputmin")
 
 
 
 
-//arama yapma
-input.addEventListener("input",function(e){
-    let search = input.value
-    Number(search)
 
-    let res = []
-    res = data.filter(item=>item.price>search)
-   
-          if(res.length>0){
+//artan fiyata göre listeleme fonksiyonu
+function list(array_name){
+  
+    array_name.sort((a,b)=>{
+        return a.price - b.price
+    })
+}
+    
+
+
+
+//max değere göre arama yapma
+inputmax.addEventListener("input",function(e){
+    let searchMax = inputmax.value
+    Number(searchMax)
+
+    let resMax = [] // filter cevap olarak dizi gönderdiğinden dizi oluşturuyoruz
+
+    resMax = data.filter(item=>item.price<searchMax)
+    list(resMax)
+          if(resMax.length>0){
             show.innerHTML=" "
-            res.forEach(element => {
+            resMax.forEach(element => {
             
                 
                 show.innerHTML+=`  
@@ -28,52 +44,41 @@ input.addEventListener("input",function(e){
                 
             })  
         }
-  
-     
-
-    // data.filter(item=>{
-
-    //      // filter ile fiyata göre arama-------
-    //     // if(Math.round(item.price)==search){
-    //     //     show.innerHTML=`  
-    //     //     <div>
-    //     //     <img src="${item.image}">
-    //     //     <h4 class="title"> ${item.title}</h4>
-    //     //     <p class="price"> ${item.price}$</p>
-    //     //     <p class="id"># ${item.id}</p>
-    //     //     </div>`
-            
-    //     // }
-
-
-    //      // filter ile id göre arama-------
-    //     // if(item.id==search){
-    //     //     show.innerHTML=`  
-    //     //     <div>
-    //     //     <img src="${item.image}">
-    //     //     <h4 class="title"> ${item.title}</h4>
-    //     //     <p class="price"> ${item.price}$</p>
-    //     //     <p class="id"># ${item.id}</p>
-    //     //     </div>`
-            
-    //     // }
-
-
-    //       if(item.title==search){
-    //         show.innerHTML=`  
-    //         <div>
-    //         <img src="${item.image}">
-    //         <h4 class="title"> ${item.title}</h4>
-    //         <p class="price"> ${item.price}$</p>
-    //         <p class="id"># ${item.id}</p>
-    //         </div>`
-            
-    //     }
-    // })
-
-
- 
 })
+
+
+
+//min değere göre listeleme
+inputmin.addEventListener("input",function(e){
+
+    let searchMin = inputmin.value
+    Number(searchMin)
+
+    let resMin = [] // filter cevap olarak dizi gönderdiğinden dizi oluşturuyoruz
+
+    resMin = data.filter(item=>item.price>searchMin)
+    list(resMin)
+
+      if(resMin.length>0){
+
+        show.innerHTML=" "
+        resMin.forEach(element => {
+        
+            
+            show.innerHTML+=`  
+            <div>
+            <img src="${element.image}">
+            <h4 class="title"> ${element.title}</h4>
+            <p class="price"> ${element.price}$</p>
+            <p class="id"># ${element.id}</p>
+            </div>`
+            
+        })  
+
+      }
+        
+    })
+
 
 
 
